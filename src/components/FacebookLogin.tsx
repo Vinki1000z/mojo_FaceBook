@@ -1,5 +1,7 @@
+// src/components/FacebookLogin.tsx
 import { useEffect } from 'react';
 import type { FacebookUser } from '../types/facebook';
+import type { FacebookUserInfo } from '../types/facebook-sdk';
 
 declare global {
   interface Window {
@@ -42,15 +44,22 @@ export default function FacebookLogin({ onLogin }: FacebookLoginProps) {
     }
 
     window.FB.login(function (response: fb.StatusResponse) {
-        if (response.authResponse) {
-          window.FB.api('/me', { fields: 'name,picture' }, function (userInfo: any) {
+      if (response.authResponse) {
+        window.FB.api(
+          '/me',
+          { fields: 'name,picture' },
+          function (userInfo: FacebookUserInfo) {
             onLogin({
-              ...userInfo,
-              accessToken: response.authResponse.accessToken,
+              name: userInfo.name,
+              picture: userInfo.picture,
+              accessToken: response.authResponse!.accessToken,
             });
-          });
-        }
-      }, { scope: 'read_insights,pages_show_list,pages_read_engagement,pages_read_user_content' });
+          }
+        );
+      }
+    }, {
+      scope: 'read_insights,pages_show_list,pages_read_engagement,pages_read_user_content'
+    });
   };
 
   return (

@@ -7,7 +7,7 @@ export interface FacebookUser {
         height: number;
       };
     };
-    accessToken: string;
+    accessToken?: string;
   }
   
   export interface FacebookPage {
