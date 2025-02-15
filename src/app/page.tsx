@@ -150,10 +150,10 @@ export default function Home() {
             {/* Insights Grid */}
             {insights && !loading && (
    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-   <InsightCard title="Total Followers" value={sumValues(insights[0])} icon="Users" />
-   <InsightCard title="Total Impressions" value={sumValues(insights[1])} icon="Eye" />
-   <InsightCard title="Total Actions" value={sumValues(insights[2])} icon="Activity" />
-   <InsightCard title="Total Reactions" value={sumValues(insights[3])} icon="Heart" />
+   <InsightCard title="Total Followers" value={insights[0]?.values[0]?.value || 0} icon="Users" />
+   <InsightCard title="Total Engagement" value={insights[1]?.values[0]?.value || 0} icon="Activity" />
+   <InsightCard title="Total Impressions" value={insights[2]?.values[0]?.value || 0} icon="Eye" />
+   <InsightCard title="Total Reactions" value={insights[3]?.values[0]?.value || 0} icon="Heart" />
  </div>
  
             )}
