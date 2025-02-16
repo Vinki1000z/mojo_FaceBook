@@ -82,11 +82,7 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
-  };
-  function sumValues(insight?: { values?: { value: number }[] }) {
-    return insight?.values?.reduce((sum, entry) => sum + (entry.value || 0), 0) || 0;
-  }
-  
+  };  
 
   useEffect(() => {
     if (selectedPage?.id && selectedPage?.access_token) {
