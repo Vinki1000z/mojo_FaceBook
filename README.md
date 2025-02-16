@@ -12,6 +12,9 @@ yarn dev
 pnpm dev
 # or
 bun dev
+#or
+to start the local server on the Https 
+next dev --experimental-https
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
